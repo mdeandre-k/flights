@@ -1,7 +1,7 @@
 package com.mytravels.flights.resource;
 
 import com.mytravels.flights.domain.entity.Country;
-import com.mytravels.flights.service.SkyScannerService;
+import com.mytravels.flights.service.CountryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,15 +14,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CountryResource {
 
-    private final SkyScannerService skyScannerService;
+    private final CountryService countryService;
 
     @GetMapping
     public List<Country> getAll() {
-        return skyScannerService.getCountries();
-    }
-
-    @GetMapping("refresh")
-    public void refreshAll() {
-        skyScannerService.refreshCountries();
+        return countryService.findAll();
     }
 }
